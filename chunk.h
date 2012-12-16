@@ -56,6 +56,8 @@ struct ChunkData
 		if (!anvil)
 			return (bo.y > 127) ? 0 : blockIDs[(bo.x * 16 + bo.z) * 128 + bo.y];
 		int i = (bo.y * 16 + bo.z) * 16 + bo.x;
+		if (i < 0) 
+			i = 0;
 		if ((i % 2) == 0)
 			return ((blockAdd[i/2] & 0xf) << 8) | blockIDs[i];
 		return ((blockAdd[i/2] & 0xf0) << 4) | blockIDs[i];
